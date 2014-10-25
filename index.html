@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" ng-app="classCrud">
+    <head>
+        <meta charset="utf-8">
+        <title>Class CRUD</title>
+        <style>
+            .column{
+                overflow:hidden;
+                margin-left:5px;
+                margin-right:5px;
+            }
+            .main{
+                font-weight: bold;
+            }
+            .tableContainer{
+                width:100%;
+                overflow:scroll;
+                white-space:nowrap;
+            }
+            .attribute-options{
+                list-style-type:none;
+            }
+            .show-true{
+                display:inline;
+            }
+            .show-false{
+                display:none;
+            }
+
+            /*Types*/
+            .String, .Date{
+                width:80px;
+            }
+            .Long, .Integer, .long, .int, .integer{
+                width:30px;
+            }
+            .Boolean, .boolean{
+                width:15px; !important
+            }
+        </style>
+    </head>
+    <body ng-controller="ClassCrudCtrl">
+        <h1>Editing {{className}}</h1>
+        <div class="attribute-chooser">
+            <a href="javascript:void(0)" onclick="toggleAttributeChooser();">Show/hide Attributes</a>
+            <div id="chooser-list" class="attribute-menu">
+                <ul>
+                    <li class="attribute-options" ng-repeat="attribute in attributes">
+                        <input type="checkbox" checked="{{attribute.show}}" /> {{attribute.name}} ({{attribute.type}})
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tableContainer">
+            <column>
+                <header class="column main {{attribute.type}} show-{{attribute.show}}" ng-repeat="attribute in attributes">
+                    {{attribute.name}}
+                </header>
+                <data class='{{attribute.type}}' ng-repeat="value in attribute.values">
+                    <span ng-switch="attribute.type">
+                        <span ng-switch-when="String">
+                            <input type="text" value="{{value}}" />
+                        </span>
+                        <span ng-switch-when="Date">
+                            <input type="text" value="{{value}}" />
+                        </span>
+                        <span ng-switch-when="Integer">
+                            <input type="text" value="{{value}}" />
+                        </span>
+                        <span ng-switch-when="Long">
+                            <input type="text" value="{{value}}" />
+                        </span>
+                        <span ng-switch-when="boolean">
+                            <input type="checkbox" checked="{{value}}" />
+                        </span>
+                        <span ng-switch-when="Boolean">
+                            <input type="checkbox" checked="{{value}}" />
+                        </span>
+                        <span ng-switch-default>
+                            {{value}}
+                        </span>
+                    </span>
+                </data>
+            </column>
+        </div>
+        <script src="angular.js"></script>
+        <script src="classCrud.js"></script>
+
+        <script>
+            function toggleAttributeChooser(el){
+                var chooserList = document.getElementById('chooser-list');
+                if(chooserList.style.display == 'none'){
+                    chooserList.style.display = 'inline'
+                    return;
+                }
+                chooserList.style.display = 'none';
+
+                console.log(chooserList.style.display)
+            }
+        </script>
+    </body>
+</html>
