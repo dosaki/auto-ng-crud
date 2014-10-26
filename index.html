@@ -8,6 +8,7 @@
                 overflow:hidden;
                 margin-left:5px;
                 margin-right:5px;
+                display:inline-block;
             }
             .main{
                 font-weight: bold;
@@ -19,12 +20,17 @@
             }
             .attribute-options{
                 list-style-type:none;
+                display:inline-block;
+                width:300px;
             }
             .show-true{
-                display:inline;
+                /*display:inline-block;*/
             }
             .show-false{
                 display:none;
+            }
+            .text{
+                width:90%;
             }
 
             /*Types*/
@@ -32,10 +38,10 @@
                 width:80px;
             }
             .Long, .Integer, .long, .int, .integer{
-                width:30px;
+                width:40px;
             }
             .Boolean, .boolean{
-                width:15px; !important
+                width:20px;
             }
         </style>
     </head>
@@ -43,47 +49,45 @@
         <h1>Editing {{className}}</h1>
         <div class="attribute-chooser">
             <a href="javascript:void(0)" onclick="toggleAttributeChooser();">Show/hide Attributes</a>
-            <div id="chooser-list" class="attribute-menu">
+            <div id="chooser-list" style="display:none;" class="attribute-menu">
                 <ul>
                     <li class="attribute-options" ng-repeat="attribute in attributes">
-                        <input type="checkbox" checked="{{attribute.show}}" /> {{attribute.name}} ({{attribute.type}})
+                        <input type="checkbox" checked="{{attribute.show}}" ng-model="attribute.show" /> {{attribute.name}} ({{attribute.type}})
                     </li>
                 </ul>
             </div>
         </div>
         <div class="tableContainer">
-            <column>
-                <header class="column main {{attribute.type}} show-{{attribute.show}}" ng-repeat="attribute in attributes">
-                    {{attribute.name}}
-                </header>
-                <data class='{{attribute.type}}' ng-repeat="value in attribute.values">
-                    <span ng-switch="attribute.type">
-                        <span ng-switch-when="String">
-                            <input type="text" value="{{value}}" />
+            <div>
+                <div class="column {{attribute.type}} show-{{attribute.show}}" ng-repeat="attribute in attributes">
+                    <div class="main">{{attribute.name}}</div>
+                    <div class='{{attribute.type}}' ng-repeat="value in attribute.values" ng-switch="attribute.type">
+                        <span ng-switch-when="String" class='{{attribute.type}}'>
+                            <input class='text' type="text" value="{{value}}" />
                         </span>
-                        <span ng-switch-when="Date">
-                            <input type="text" value="{{value}}" />
+                        <span ng-switch-when="Date" class='{{attribute.type}}'>
+                            <input class='text' type="text" value="{{value}}" />
                         </span>
-                        <span ng-switch-when="Integer">
-                            <input type="text" value="{{value}}" />
+                        <span ng-switch-when="Integer" class='{{attribute.type}}'>
+                            <input class='text' type="text" value="{{value}}" />
                         </span>
-                        <span ng-switch-when="Long">
-                            <input type="text" value="{{value}}" />
+                        <span ng-switch-when="Long" class='{{attribute.type}}'>
+                            <input class='text' type="text" value="{{value}}" />
                         </span>
-                        <span ng-switch-when="boolean">
-                            <input type="checkbox" checked="{{value}}" />
+                        <span ng-switch-when="boolean" class='{{attribute.type}}'>
+                            <input class='{{attribute.type}}' type="checkbox" checked="{{value}}" />
                         </span>
-                        <span ng-switch-when="Boolean">
-                            <input type="checkbox" checked="{{value}}" />
+                        <span ng-switch-when="Boolean" class='{{attribute.type}}'>
+                            <input class='{{attribute.type}}' type="checkbox" checked="{{value}}" />
                         </span>
                         <span ng-switch-default>
-                            {{value}}
+                            {{value||'n/a'}}
                         </span>
-                    </span>
-                </data>
-            </column>
+                    </div>
+                </div>
+            </div>
         </div>
-        <script src="angular.js"></script>
+        <script src="lib/angular.js"></script>
         <script src="classCrud.js"></script>
 
         <script>
@@ -94,8 +98,6 @@
                     return;
                 }
                 chooserList.style.display = 'none';
-
-                console.log(chooserList.style.display)
             }
         </script>
     </body>

@@ -1,22 +1,34 @@
 var classCrud = angular.module('classCrud', []);
 
 classCrud.controller('ClassCrudCtrl', function ($scope) {
-    $scope.attributes = [{"show":"true", "type":"Date", "name":"closeDate", "values":[1:"2014-11-14T13:43:00Z"]},
-	{"show":"true", "type":"String", "name":"confirmText", "values":[1:"Thank you for confirming."]},
-	{"show":"true", "type":"String", "name":"connectionMode", "values":[1:"http"]},
-	{"show":"true", "type":"String", "name":"consentAgreement", "values":[1:"You are being invited to take part in this."]},
-	{"show":"true", "type":"String", "name":"contact", "values":[1:""]},
-	{"show":"true", "type":"Long", "name":"copiedFrom", "values":[1:null]},
-	{"show":"true", "type":"String", "name":"description", "values":[1:"blabla"]},
-	{"show":"true", "type":"String", "name":"descriptionImageLayout", "values":[1:"center"]},
-	{"show":"true", "type":"String", "name":"folder", "values":[1:"bt"]},
-	{"show":"true", "type":"Boolean", "name":"goFirstTask", "values":[1:false]},
-	{"show":"true", "type":"Boolean", "name":"inSameWindow", "values":[1:true]},
-	{"show":"true", "type":"Boolean", "name":"isLive", "values":[1:true]},
-	{"show":"true", "type":"String", "name":"locale", "values":[1:""]}, {"show":"true", "type":"String", "name":"name", "values":[]}, {"show":"true", "type":"String", "name":"optOutText", "values":[]}, {"show":"true", "type":"Organization", "name":"organization", "values":[]}, {"show":"true", "type":"String", "name":"pageFooter", "values":[]}, {"show":"true", "type":"String", "name":"pageHeader", "values":[]}, {"show":"true", "type":"SortedSet", "name":"sections", "values":[]}, {"show":"true", "type":"String", "name":"shortName", "values":[]}, {"show":"true", "type":"Date", "name":"startDate", "values":[]}, {"show":"true", "type":"String", "name":"styleSheet", "values":[]}, {"show":"true", "type":"String", "name":"testOverText", "values":[]}, {"show":"true", "type":"String", "name":"thankYou", "values":[]}, {"show":"true", "type":"Boolean", "name":"useCache", "values":[]}, {"show":"true", "type":"Set", "name":"userSessions", "values":[]}, {"show":"true", "type":"String", "name":"webSiteName", "values":[]}];
-
-    $scope.instances = ["contact":{"attr":"","type":"String"},"copiedFrom":{"attr":null,"type":"Long"},"description":{"attr":"\u003cimg alt=\u0022Participate\u0022 src=\u0022http:\u002f\u002f$\u007bstaticImages\u007dhandsup.jpg\u0022 \u002f\u003e\u003ch1 style=\u0022text-align:center\u003b\u0022\u003eParticipate\u003c\u002fh1\u003e\n\u003cdiv class=\u0022participateBox\u0022\u003e$\u007bname\u007d would like to find out how easy their website is to use. \u003cbr\u002f\u003e\n\u003col\u003e\n\u003cli\u003eFirst\u002c we will ask you a few questions about yourself. \u003c\u002fli\u003e\n\u003cli\u003eThen\u002c you will complete one task using the $\u007bname\u007d website \u003c\u002fli\u003e\n\u003cli\u003eThis is followed by a short feedback questionnaire. \u003c\u002fli\u003e\n\u003c\u002fol\u003e\n The entire process should take approximately 5 minutes. Thank you for participating - we greatly appreciate your time and help!\u003cbr\u002f\u003e\n\u003c\u002fdiv\u003e\n","type":"String"},"descriptionImageLayout":{"attr":"","type":"String"},"folder":{"attr":"","type":"String"},"goFirstTask":{"attr":false,"type":"Boolean"},"inSameWindow":{"attr":false,"type":"Boolean"},"isLive":{"attr":false,"type":"boolean"},"locale":{"attr":"en","type":"String"},"name":{"attr":"","type":"String"},"optOutText":{"attr":"You have successfully un-subscribed from this mailing list.","type":"String"},"organization":{"attr":null,"type":"Organization"},"pageFooter":{"attr":null,"type":"String"},"pageHeader":{"attr":null,"type":"String"},"sections":{"attr":[{"class":"com.webnographer.BranchSection","id":11290,"branchConditionTask":null,"branchConditionType":"equals","branchConditionValue":"","branchOn":null,"branchToSection":null,"copiedFrom":null,"participantSectionResults":[],"route":0,"sectionName":"Section 11290","sequence":1,"tasks":[],"test":{"class":"Test","id":584}},{"class":"com.webnographer.Section","id":11291,"copiedFrom":null,"participantSectionResults":[],"route":0,"sectionName":"Section 11291","sequence":2,"tasks":[],"test":{"class":"Test","id":584}}],"type":"SortedSet"},"shortName":{"attr":"","type":"String"},"startDate":{"attr":"2014-10-29T13:43:00Z","type":"Date"},"styleSheet":{"attr":null,"type":"String"},"testOverText":{"attr":"\u003cp\u003eThank you for your interest in our research. We had a lot of responses and the test is now closed.\u003c\u002fp\u003e\n\u003cp\u003eIf you would like to help in future research please email participate\u0040webnographer.com\u003c\u002fp\u003e\n","type":"String"},"thankYou":{"attr":"\u003cp\u003eThank you for your time and help in this study. It has is extremely useful for us. If you would like \nto participate in future studies\u002c please submit you email address below.\n\u003c\u002fp\u003e\u003cbr\u002f\u003e\n","type":"String"},"useCache":{"attr":true,"type":"Boolean"},"userSessions":{"attr":[],"type":"Set"},"webSiteName":{"attr":"","type":"String"}}
-
+    $scope.attributes = $scope.attributes = [
+        {"show":true, "type":"Date", "name":"closeDate", "values":{1:"2014-11-14T13:43:00Z"}},
+        {"show":true, "type":"String", "name":"confirmText", "values":{1:"Thank you for confirming."}},
+        {"show":true, "type":"String", "name":"connectionMode", "values":{1:"http"}},
+        {"show":true, "type":"String", "name":"consentAgreement", "values":{1:"You are being invited to take part in this."}},
+        {"show":true, "type":"String", "name":"contact", "values":{1:""}},
+        {"show":true, "type":"Long", "name":"copiedFrom", "values":{1:null}},
+        {"show":true, "type":"String", "name":"description", "values":{1:"blabla"}},
+        {"show":true, "type":"String", "name":"descriptionImageLayout", "values":{1:"center"}},
+        {"show":true, "type":"String", "name":"folder", "values":{1:"bt"}},
+        {"show":true, "type":"Boolean", "name":"goFirstTask", "values":{1:false}},
+        {"show":true, "type":"Boolean", "name":"inSameWindow", "values":{1:true}},
+        {"show":true, "type":"Boolean", "name":"isLive", "values":{1:true}},
+        {"show":true, "type":"String", "name":"locale", "values":{1:""}},
+        {"show":true, "type":"String", "name":"name", "values":{1:""}},
+        {"show":true, "type":"String", "name":"optOutText", "values":{1:""}},
+        {"show":true, "type":"Organization", "name":"organization", "values":{1:""}},
+        {"show":true, "type":"String", "name":"pageFooter", "values":{1:""}},
+        {"show":true, "type":"String", "name":"pageHeader", "values":{1:""}},
+        {"show":true, "type":"SortedSet", "name":"sections", "values":{1:""}},
+        {"show":true, "type":"String", "name":"shortName", "values":{1:""}},
+        {"show":true, "type":"Date", "name":"startDate", "values":{1:""}},
+        {"show":true, "type":"String", "name":"styleSheet", "values":{1:""}},
+        {"show":true, "type":"String", "name":"testOverText", "values":{1:""}},
+        {"show":true, "type":"String", "name":"thankYou", "values":{1:""}},
+        {"show":true, "type":"Boolean", "name":"useCache", "values":{1:""}},
+        {"show":true, "type":"Set", "name":"userSessions", "values":{1:""}},
+        {"show":true, "type":"String", "name":"webSiteName", "values":{1:""}}
     ];
 
     $scope.className = "Test"
